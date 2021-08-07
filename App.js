@@ -1,11 +1,15 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
 // components
-import Home from "./screens/home";
+import HomeStack from "./routes/homeStack";
 
-// todo: install stack nav
 // todo: make whole app scrollable, not just flatlist
 export default function App() {
-  return <Home />;
+  return (
+    <NavigationContainer>
+      <HomeStack />
+    </NavigationContainer>
+  );
 }

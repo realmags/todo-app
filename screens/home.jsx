@@ -14,11 +14,11 @@ import Task from "../components/Task";
 import TaskForm from "../components/TaskForm";
 
 // todo: edit weird shadow of button
-export default function Home() {
+export default function Home({ navigation }) {
   const [taskItems, setTaskItems] = useState([
-    { key: "1", task: "Buy dog food 🐶" },
-    { key: "2", task: "Feed cat 🐱" },
-    { key: "3", task: "Eat apple 🍎" },
+    { key: "1", task: "Buy dog food 🐶", details: "No hay dog" },
+    { key: "2", task: "Feed cat 🐱", details: "Miming is always hungry" },
+    { key: "3", task: "Eat apple 🍎", details: "Keep the doctor away" },
   ]);
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -33,12 +33,14 @@ export default function Home() {
     <View style={styles.container}>
       {/* today's tasks */}
       <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Today's Tasks</Text>
+        {/* <Text style={styles.sectionTitle}>Today's Tasks</Text> */}
         <View style={styles.items}>
           <FlatList
             data={taskItems}
             renderItem={({ item }) => (
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("TaskDetails", { item })}
+              >
                 <Task text={item.task} />
               </TouchableOpacity>
             )}
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
   },
   tasksWrapper: {
     flex: 1,
-    paddingTop: 80,
+    // paddingTop: 80,
     paddingHorizontal: 20,
     paddingBottom: 80,
   },
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   },
   items: {
     flex: 1,
-    marginTop: 30,
+    marginTop: 20,
   },
   writeTaskWrapper: {
     position: "absolute",
@@ -107,6 +109,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 20,
     bottom: 30,
+    // test
+    // backgroundColor: "#fff",
+    // borderRadius: 60,
   },
   addButton: {
     width: 60,
@@ -115,10 +120,12 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     // ! weird shadow border
     // elevation: 1,
-    shadowOffset: { width: 1, height: -2 },
-    shadowOpacity: 0.6,
-    shadowRadius: 60,
-    shadowColor: "#c0c0c0",
+    // shadowOffset: { width: 1, height: -2 },
+    // shadowOpacity: 0.6,
+    // shadowRadius: 60,
+    // shadowColor: "#c0c0c0",
+    borderColor: "#c0c0c0",
+    borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
   },
