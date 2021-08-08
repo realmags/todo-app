@@ -29,6 +29,12 @@ export default function Home({ navigation }) {
     setTaskItems((prevTaskItems) => [...prevTaskItems, newTaskItem]);
   };
 
+  const handleRemoveTask = (key) => {
+    setTaskItems((prevTaskItems) =>
+      prevTaskItems.filter((item) => item.key !== key)
+    );
+  };
+
   return (
     <View style={styles.container}>
       {/* today's tasks */}
@@ -39,7 +45,9 @@ export default function Home({ navigation }) {
             data={taskItems}
             renderItem={({ item }) => (
               <TouchableOpacity
-                onPress={() => navigation.navigate("TaskDetails", { item })}
+                onPress={() =>
+                  navigation.navigate("TaskDetails", { item, handleRemoveTask })
+                }
               >
                 <Task text={item.task} />
               </TouchableOpacity>

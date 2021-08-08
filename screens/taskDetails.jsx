@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 // * consider adding timestamp
 // todo: add custom header to navigation
 export default function TaskDetails({ navigation, route }) {
-  const { item } = route.params;
+  const { item, handleRemoveTask } = route.params;
 
   return (
     <SafeAreaView style={styles.taskDetailsWrapper}>

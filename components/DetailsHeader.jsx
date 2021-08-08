@@ -12,7 +12,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 export default function DetailsHeader() {
   return (
     // <View style={styles.headerWrapper}>
-    <TouchableNativeFeedback style={styles.deleteButton}>
+    <TouchableNativeFeedback
+      background={TouchableNativeFeedback.Ripple("#40000016", true)}
+      style={styles.deleteButton}
+    >
       <View style={styles.deleteWrapper}>
         <MaterialIcons name="delete" size={24} color="#55bcf6" />
       </View>
@@ -23,16 +26,12 @@ export default function DetailsHeader() {
 
 const styles = StyleSheet.create({
   deleteWrapper: {
-    padding: 5,
+    padding: 3,
     // width: 30,
     // height: 30,
     // borderColor: "#333",
     // borderWidth: 1,
-    backgroundColor: "#333",
-    // borderRadius: 100,
-  },
-  deleteButton: {
+    // backgroundColor: "#333",
     borderRadius: 100,
-    backgroundColor: "#333",
   },
 });
