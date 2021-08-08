@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   headerWrapper: {
     paddingTop: 40,
     paddingBottom: 20,
-    // backgroundColor: "#fff",
     width: "100%",
     height: "100%",
   },

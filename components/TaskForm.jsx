@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-// ! taskInput update is not realtime, check taskInput.details
 export default function TaskForm({
   toggleModal,
   setToggleModal,
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   saveButtonWrapper: {
-    // backgroundColor: "#333333d5",
     alignSelf: "flex-end",
   },
   saveButton: {

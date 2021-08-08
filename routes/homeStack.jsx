@@ -9,7 +9,15 @@ import DetailsHeader from "../components/DetailsHeader";
 
 const Stack = createNativeStackNavigator();
 
-export default function HomeStack() {
+// @warning Use react context for passing states
+// see react-navigation docs
+export default function HomeStack({
+  taskItems,
+  handleAddTask,
+  handleRemoveTask,
+  toggleModal,
+  setToggleModal,
+}) {
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -17,23 +25,34 @@ export default function HomeStack() {
     >
       <Stack.Screen
         name="Home"
-        component={Home}
         options={{
           headerStyle: {
             backgroundColor: "#e8eaed",
           },
           headerTitle: () => <HomeHeader />,
         }}
-      />
+      >
+        {(props) => (
+          <Home
+            {...props}
+            handleAddTask={handleAddTask}
+            taskItems={taskItems}
+            toggleModal={toggleModal}
+            setToggleModal={setToggleModal}
+          />
+        )}
+      </Stack.Screen>
       <Stack.Screen
         name="TaskDetails"
         component={TaskDetails}
         options={{
           headerStyle: {
             backgroundColor: "#fff",
+            height: 40,
           },
-          headerTitle: "",
-          headerRight: () => <DetailsHeader />,
+          header: (props) => (
+            <DetailsHeader {...props} handleRemoveTask={handleRemoveTask} />
+          ),
         }}
       />
     </Stack.Navigator>
